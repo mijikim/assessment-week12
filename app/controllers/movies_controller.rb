@@ -9,7 +9,7 @@ class MoviesController < ApplicationController
   end
 
   def create
-    @movies = Movie.new(name: params[:movie][:name], synopsis: params[:movie][:name], year: params[:movie][:year])
+    @movies = Movie.new(name: params[:movie][:name], synopsis: params[:movie][:synopsis], year: params[:movie][:year])
     if @movies.save
       redirect_to "/"
     else
