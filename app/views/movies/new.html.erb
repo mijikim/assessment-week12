@@ -1,19 +1,28 @@
 <%= form_for @movies do |m| %>
-<div>
-  <%= m.label :name %><br>
-  <%= m.text_field :name, autofocus: true %>
-</div>
-<div>
-  <%= m.label :year %><br>
-  <%= m.select :year, (Time.zone.now.year - 50)..(Time.zone.now.year) %>
-
-  <!--<#%= m.text_field :year, autofocus: true %>-->
-</div>
-<div>
-  <%= m.label :synopsis %><br>
-  <%= m.text_area :synopsis, autofocus: true %>
-</div>
-<div>
-  <%= m.submit "Create Movie" %>
-</div>
+  <% if @movies.errors.any? %>
+    <div class="errors">
+      <% @movies.errors.full_messages.each do |message| %>
+        <li class="error"><%= message %></li>
+      <% end %>
+  <% end %>
+  </div>
+  <div>
+    <%= m.label :name %>
+    <br>
+    <%= m.text_field :name, autofocus: true %>
+  </div>
+  <div>
+    <%= m.label :year %>
+    <br>
+    <%= m.text_field :year, placeholder: "YYYY", autofocus: true %>
+    <!--<#%= m.select :year, (Time.zone.now.year - 50)..(Time.zone.now.year) %>-->
+  </div>
+  <div>
+    <%= m.label :synopsis %>
+    <br>
+    <%= m.text_area :synopsis, autofocus: true %>
+  </div>
+  <div>
+    <%= m.submit "Create Movie" %>
+  </div>
 <% end %>
