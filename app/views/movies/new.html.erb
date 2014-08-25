@@ -1,0 +1,19 @@
+<%= form_for @movies do |m| %>
+<div>
+  <%= m.label :name %><br>
+  <%= m.text_field :name, autofocus: true %>
+</div>
+<div>
+  <%= m.label :year %><br>
+  <%= m.select :year, (Time.zone.now.year - 50)..(Time.zone.now.year) %>
+
+  <!--<#%= m.text_field :year, autofocus: true %>-->
+</div>
+<div>
+  <%= m.label :synopsis %><br>
+  <%= m.text_area :synopsis, autofocus: true %>
+</div>
+<div>
+  <%= m.submit "Create Movie" %>
+</div>
+<% end %>
